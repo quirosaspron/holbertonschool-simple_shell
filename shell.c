@@ -11,6 +11,7 @@ int main(void)
 	char *token;
 	char *argv[10];
 	int argc = 0;
+	int val;
 	pid_t pid;
 
 	while (1)
@@ -28,7 +29,7 @@ int main(void)
 			argv[argc++] = token;
 			token = strtok(NULL, " ");
 		}
-
+		argv[argc] = NULL;
 		if (argc > 0)
 		{
 			pid = fork();
@@ -39,7 +40,11 @@ int main(void)
 			}
 			else if (pid == 0)
 			{
-				execve(argv[0], argv, NULL );
+				val = execve(argv[0], argv, NULL );
+				if (val == -1)
+				{
+					perror("Error");
+				}	
 				return (1);
 			}
 			else
