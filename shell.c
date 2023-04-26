@@ -22,12 +22,11 @@ int main(void)
 			printf("Error reading input\n");
 			return (1);
 		}
-
-		token = strtok(buffer, " ");
+		token = strtok(buffer, " \n");
 		while (token != NULL)
 		{
 			argv[argc++] = token;
-			token = strtok(NULL, " ");
+			token = strtok(NULL, " \n");
 		}
 		argv[argc] = NULL;
 		if (argc > 0)
