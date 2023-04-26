@@ -19,7 +19,8 @@ int main(void)
 		printf("#myshell$ ");
 		if (getline(&buffer, &n,stdin) == -1)
 		{
-			printf("Error reading input\n");
+			/*printf("Error reading input\n");*/
+			perror("Error");
 			return (1);
 		}
 		token = strtok(buffer, " \n");
