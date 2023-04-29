@@ -55,6 +55,13 @@ int cmd_read(char *s, size_t __attribute__((unused))file_stream, char *name)
 		return (2);
 	if (_strcmp(s, "env") == 0)
 		return (_printenv());
+
+	while (*s == ' ')
+		s++;
+
+	if (*s == '\0')
+		return (0);
+
 	token = strtok(s, " "), i = 0;
 	while (token)
 	{
@@ -62,7 +69,6 @@ int cmd_read(char *s, size_t __attribute__((unused))file_stream, char *name)
 		token = strtok(NULL, " ");
 	}
 	cmd_arr[i] = NULL;
-/* Return status code */
 	return (call_command(cmd_arr, name));
 }
 /**
