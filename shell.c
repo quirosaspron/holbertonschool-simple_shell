@@ -21,7 +21,7 @@ int main(void)
 		{
 			/*printf("Error reading input\n");
 			perror("Error");*/
-			return (1);
+			return (0);
 		}
 		token = strtok(buffer, " \n");
 		while (token != NULL)
