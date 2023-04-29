@@ -53,7 +53,7 @@ int main(void)
 			}
 		}
 		argc = 0;
-		printf("#myshell$ ");
+		/*printf("#myshell$ ");*/
 	}
 
 	free(buffer);
