@@ -41,8 +41,9 @@ int main(int argc, char *argv[])
 }
 /**
  * cmd_read - handles command line and tokenizes it
- *@s: string
- *@file_stream: getline input
+ * @s: string
+ * @file_stream: getline input
+ * @name: name
  * Return: 0
  */
 int cmd_read(char *s, size_t __attribute__((unused))file_stream, char *name)
@@ -73,8 +74,8 @@ int cmd_read(char *s, size_t __attribute__((unused))file_stream, char *name)
 }
 /**
  * print_not_found - prints when cmd is not found in path
- *
  * @cmd: a string provided by the stdin
+ * @name: name
  */
 void print_not_found(char *cmd, char *name)
 {
@@ -85,8 +86,8 @@ void print_not_found(char *cmd, char *name)
 }
 /**
  * call_command - calls cmd, forks, execve
- *
  * @cmd_arr: a string provided by the stdin
+ * @name: name
  * Return: 0
  */
 int call_command(char *cmd_arr[], char *name)
