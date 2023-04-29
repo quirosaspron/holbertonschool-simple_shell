@@ -16,7 +16,7 @@ int main(void)
 
 	while (1)
 	{
-		//printf("#myshell$ ");
+		/*printf("#myshell$ ");*/
 		if (getline(&buffer, &n,stdin) == -1)
 		{
 			/*printf("Error reading input\n");
