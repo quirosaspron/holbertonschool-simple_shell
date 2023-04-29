@@ -16,11 +16,11 @@ int main(void)
 
 	while (1)
 	{
-		printf("#myshell$ ");
+		//printf("#myshell$ ");
 		if (getline(&buffer, &n,stdin) == -1)
 		{
-			printf("Error reading input\n");
-			perror("Error");
+			/*printf("Error reading input\n");
+			perror("Error");*/
 			return (1);
 		}
 		token = strtok(buffer, " \n");
@@ -53,6 +53,7 @@ int main(void)
 			}
 		}
 		argc = 0;
+		printf("#myshell$ ");
 	}
 
 	free(buffer);
