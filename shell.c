@@ -11,8 +11,9 @@ int main(int argc, char *argv[])
 	char *s = NULL;
 	size_t buffer_size = 0;
 	ssize_t file_stream = 0;
-	char *name;
 	(void) argc;
+	char *name;
+
 	name = argv[0];
 
 	while (1)

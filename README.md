@@ -1,1 +1,1 @@
-A simple shell
+Not empty
