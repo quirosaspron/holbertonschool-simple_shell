@@ -102,13 +102,13 @@ int call_command(char *cmd_arr[], char *name)
 	if (exe_path_str == NULL)
 	{
 		print_not_found(cmd, name);
-		return (3);
+		return (127);
 	}
 	is_child = fork();
 	if (is_child < 0)
 	{
 		perror("Error:");
-		return (-1);
+		return (126);
 	}
 	if (is_child > 0)
 		wait(&status);
@@ -116,8 +116,8 @@ int call_command(char *cmd_arr[], char *name)
 	{
 		(execve(exe_path_str, cmd_arr, environ));
 		perror("Error:");
-		exit(1);
+		exit(127);
 	}
 	free(exe_path_str);
-	return (0);
+	return (WEXITSTATUS(status));
 }
