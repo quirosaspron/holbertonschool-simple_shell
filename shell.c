@@ -96,7 +96,7 @@ int call_command(char *cmd_arr[], char *name)
 	pid_t is_child;
 	int status;
 
-	exe_path_str = pathfinder(cmd);
+	exe_path_str = pathfinder(cmd_arr[0]);
 	if (exe_path_str == NULL)
 	{
 		print_not_found(cmd_arr[0], name);
