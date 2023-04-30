@@ -92,21 +92,21 @@ void print_not_found(char *cmd, char *name)
  */
 int call_command(char *cmd_arr[], char *name)
 {
-	char *exe_path_str = cmd_arr[0];
+	char *cmd = cmd_arr[0];
+	char *exe_path_str = pathfinder(cmd);
 	pid_t is_child;
 	int status;
 
-	exe_path_str = pathfinder(cmd_arr[0]);
 	if (exe_path_str == NULL)
 	{
-		print_not_found(cmd_arr[0], name);
+		print_not_found(cmd, name);
 		return (127);
 	}
 	is_child = fork();
 	if (is_child < 0)
 	{
 		perror("Error:");
-		return (126);
+		return (-1);
 	}
 	if (is_child > 0)
 		wait(&status);
