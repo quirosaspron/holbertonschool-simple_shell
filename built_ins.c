@@ -73,7 +73,7 @@ env_t *env_list(char **env)
 		node = malloc(sizeof(env_t));
 		if (node == NULL)
 			exit(1);
-		node->var = _strdup(*env);
+		node->name = _strdup(*env);
 		node->next = NULL;
 		if (head == NULL)
 			head = node;
@@ -81,14 +81,11 @@ env_t *env_list(char **env)
 			temp->next = node;
 		temp = node;
 
-		// Remove PATH variable and set PATH1 variable
 		if (_strncmp(*env, "PATH=", 5) == 0)
 			_unsetenv(&head, *env);
 		if (_strncmp(*env, "PATH1=", 6) == 0)
 			_unsetenv(&head, *env);
 	}
-
-	// Set PATH1 variable
 	path_value = _strcat("PATH1=", "/bin");
 	_setenv(&head, path_value);
 
