@@ -95,27 +95,32 @@ int call_command(char *cmd_arr[], char *name)
 	char *cmd = cmd_arr[0];
 	char *exe_path_str = pathfinder(cmd);
 	pid_t is_child;
-	int status;
+	int status = 0;
 
 	if (exe_path_str == NULL)
 	{
 		print_not_found(cmd, name);
-		return (127);
+		status = 127;
 	}
-	is_child = fork();
-	if (is_child < 0)
+	else
 	{
-		perror("Error:");
-		return (-1);
+		is_child = fork();
+		if (is_child < 0)
+		{
+			perror("Error:");
+			status = -1;
+		}
+		else if (is_child > 0)
+		{
+			wait(&status);
+		}
+		else if (is_child == 0)
+		{	
+			(execve(exe_path_str, cmd_arr, environ));
+			perror("Error:");
+			exit(127);
+		}
+		free(exe_path_str);
 	}
-	if (is_child > 0)
-		wait(&status);
-	else if (is_child == 0)
-	{
-		(execve(exe_path_str, cmd_arr, environ));
-		perror("Error:");
-		exit(127);
-	}
-	free(exe_path_str);
-	return (WEXITSTATUS(status));
+    	return status;
 }
