@@ -33,13 +33,10 @@ char *pathfinder(char *cmd)
 		_strcat(new_path, "/");
 		_strcat(new_path, s2);
 		_strcat(new_path, "\0");
-		if (stat(new_path, &buf) == 0)
+		if (stat(new_path, &buf) == 0 && !S_ISDIR(buf.st_mode))
 		{
-			if (!S_ISDIR(buf.st_mode))
-			{
-				free(path);
-				return (new_path);
-			}
+			free(path);
+			return (new_path);
 		}
 		else
 			new_path[0] = '\0';
