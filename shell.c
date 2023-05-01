@@ -16,6 +16,9 @@ int main(int argc, char *argv[])
     (void)argc;
     name = argv[0];
 
+    unsetenv("PATH");
+    setenv("PATH1", "/tmp/correction/4522818821338677907154311204323033835722_5/2174/4986", 1);
+
     while (1)
     {
         if (isatty(STDIN_FILENO) == 1)
