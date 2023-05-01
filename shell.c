@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     size_t buffer_size = 0;
     ssize_t file_stream = 0;
     char *name;
-    int exit_status = 0;  // Initialize exit status to 0
+    int exit_status = 0; 
 
     (void)argc;
     name = argv[0];
@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     free(s);
     s = NULL;
 
-    return exit_status;  // Return the exit status
+    return exit_status;
 }
 
 /**
