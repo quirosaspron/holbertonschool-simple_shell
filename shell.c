@@ -16,8 +16,7 @@ int main(int argc, char *argv[])
     (void)argc;
     name = argv[0];
 
-    unsetenv("PATH");
-    setenv("PATH1", "/tmp/correction/4522818821338677907154311204323033835722_5/2174/4986", 1);
+    setenv("PATH1", ".", 1);
 
     while (1)
     {
@@ -112,7 +111,7 @@ int call_command(char *cmd_arr[], char *name)
 
     if (exe_path_str == NULL && _strcmp(cmd_arr[0], "exit") != 0)
     {
-        print_not_found(cmd, name);
+        dprintf(STDERR_FILENO, "%s: 1: %s: not found\n", name, cmd);
         status = 127;
     }
     else
