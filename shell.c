@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
         cmd_return_status = cmd_read(s, file_stream, name);
         if (cmd_return_status == 2)
         {
-            return_status = 0;
+            return_status = 2;
             break;
         }
         else if (cmd_return_status != 0)
