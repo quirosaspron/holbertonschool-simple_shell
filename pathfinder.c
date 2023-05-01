@@ -7,7 +7,7 @@
 char *pathfinder(char *cmd)
 {
 	struct stat buf;
-	char *path, path_tokens, path_array[100];
+	char *path, *path_tokens, *path_array[100];
 	char *s2 = cmd;
 	char *new_path = NULL;
 	int i, j;
