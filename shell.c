@@ -11,8 +11,8 @@ int main(int argc, char *argv[])
     size_t buffer_size = 0;
     ssize_t file_stream = 0;
     char *name;
-    int return_status = 0;
-    int cmd_return_status;
+    int exit_status = 0;  // Initialize exit status to 0
+
     (void)argc;
     name = argv[0];
 
@@ -32,22 +32,14 @@ int main(int argc, char *argv[])
             s[file_stream - 1] = '\0';
         if (*s == '\0')
             continue;
-        cmd_return_status = cmd_read(s, file_stream, name);
-        if (cmd_return_status == 2)
-        {
-            return_status = 0;
+        if (cmd_read(s, file_stream, name, &exit_status) == 2)
             break;
-        }
-        else if (cmd_return_status != 0)
-        {
-            return_status = cmd_return_status;
-        }
     }
     free(s);
     s = NULL;
-    return (return_status);
-}
 
+    return exit_status;  // Return the exit status
+}
 
 /**
  * cmd_read - handles command line and tokenizes it
