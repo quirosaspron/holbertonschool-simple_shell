@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     ssize_t file_stream = 0;
     char *name;
     int return_status = 0;
-
+    int cmd_return_status;
     (void)argc;
     name = argv[0];
 
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
             s[file_stream - 1] = '\0';
         if (*s == '\0')
             continue;
-        int cmd_return_status = cmd_read(s, file_stream, name);
+        cmd_return_status = cmd_read(s, file_stream, name);
         if (cmd_return_status == 2)
         {
             return_status = 0;
