@@ -81,9 +81,9 @@ env_t *env_list(char **env)
 			temp->next = node;
 		temp = node;
 
-		if (_strncmp(*env, "PATH=", 5) == 0)
+		if (_strcmp(*env, "PATH=", 5) == 0)
 			_unsetenv(&head, *env);
-		if (_strncmp(*env, "PATH1=", 6) == 0)
+		if (_strcmp(*env, "PATH1=", 6) == 0)
 			_unsetenv(&head, *env);
 	}
 	path_value = _strcat("PATH1=", "/bin");
