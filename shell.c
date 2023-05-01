@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
             s[file_stream - 1] = '\0';
         if (*s == '\0')
             continue;
-        if (cmd_read(s, file_stream, name, &exit_status) == 2)
+        if (cmd_read(s, name, &exit_status) == 2)
             break;
     }
     free(s);
