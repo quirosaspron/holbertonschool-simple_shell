@@ -22,4 +22,7 @@ void print_not_found(char *cmd, char *name);
 int call_command(char *cmd_arr[], char *name);
 char *_getenv(char *var);
 int _str_n_cmp(char *s1, char *s2, int n);
+
+void _unsetenv(char **env, char *name);
+void _setenv(char ***env, char *name, char *value);
 #endif

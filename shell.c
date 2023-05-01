@@ -116,9 +116,12 @@ int call_command(char *cmd_arr[], char *name)
     else if (_strcmp(cmd_arr[0], "exit") == 0)
     {
         if (cmd_arr[1] != NULL)
-            status = atoi(cmd_arr[1]);
+            status = _atoi(cmd_arr[1]);
         else
             status = 0;
+
+        _unsetenv(&environ, "PATH");
+        _setenv(&environ, "PATH1", path_value);
     }
     else
     {
@@ -143,4 +146,3 @@ int call_command(char *cmd_arr[], char *name)
 
     return status;
 }
-
