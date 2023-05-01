@@ -92,35 +92,36 @@ void print_not_found(char *cmd, char *name)
  */
 int call_command(char *cmd_arr[], char *name)
 {
-	char *cmd = cmd_arr[0];
-	char *exe_path_str = pathfinder(cmd);
-	pid_t is_child;
-	int status = 0;
+    char *cmd = cmd_arr[0];
+    char *exe_path_str = pathfinder(cmd);
+    pid_t is_child;
+    int status = 0;
 
-	if (exe_path_str == NULL)
-	{
-		print_not_found(cmd, name);
-		status = 127;
-	}
-	else
-	{
-		is_child = fork();
-		if (is_child < 0)
-		{
-			perror("Error:");
-			status = -1;
-		}
-		else if (is_child > 0)
-		{
-			wait(&status);
-		}
-		else if (is_child == 0)
-		{	
-			(execve(exe_path_str, cmd_arr, environ));
-			perror("Error:");
-			exit(127);
-		}
-		free(exe_path_str);
-	}
-    	return status;
+    if (exe_path_str == NULL && _strcmp(cmd_arr[0], "exit") != 0)
+    {
+        print_not_found(cmd, name);
+        status = 127;
+    }
+    else
+    {
+        is_child = fork();
+        if (is_child < 0)
+        {
+            perror("Error:");
+            status = -1;
+        }
+        else if (is_child > 0)
+        {
+            wait(&status);
+        }
+        else if (is_child == 0)
+        {
+            (execve(exe_path_str, cmd_arr, environ));
+            perror("Error:");
+            exit(127);
+        }
+        free(exe_path_str);
+    }
+
+    return status;
 }
