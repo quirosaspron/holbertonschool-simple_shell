@@ -107,7 +107,6 @@ int call_command(char *cmd_arr[], char *name)
     char *exe_path_str = pathfinder(cmd);
     pid_t is_child;
     int status = 0;
-    char *path_value = _getenv("PATH");
 
     if (exe_path_str == NULL && _strcmp(cmd_arr[0], "exit") != 0)
     {
