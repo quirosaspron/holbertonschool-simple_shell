@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     size_t buffer_size = 0;
     ssize_t file_stream = 0;
     char *name;
-    int return_status = 0; // Initialize return status to 0
+    int return_status = 0;
 
     (void)argc;
     name = argv[0];
