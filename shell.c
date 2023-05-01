@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     (void)argc;
     name = argv[0];
 
-    setenv("PATH1", ".", 1);
+    setenv("PATH1", "/bin", 1);
 
     while (1)
     {
