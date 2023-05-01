@@ -5,40 +5,50 @@
  * @argv: argv for command
  * Return: Always 0.
  */
-
 int main(int argc, char *argv[])
 {
-	char *s = NULL;
-	size_t buffer_size = 0;
-	ssize_t file_stream = 0;
-	char *name;
+    char *s = NULL;
+    size_t buffer_size = 0;
+    ssize_t file_stream = 0;
+    char *name;
+    int return_status = 0; // Initialize return status to 0
 
-	(void) argc;
-	name = argv[0];
+    (void)argc;
+    name = argv[0];
 
-	while (1)
-	{
-		if (isatty(STDIN_FILENO) == 1)
-			write(1, "$ ", 2);
-		file_stream = getline(&s, &buffer_size, stdin);
-		if (file_stream == -1)
-		{
-			if (isatty(STDIN_FILENO) == 1)
-				write(1, "\n", 1);
-			break;
-		}
+    while (1)
+    {
+        if (isatty(STDIN_FILENO) == 1)
+            write(1, "$ ", 2);
+        file_stream = getline(&s, &buffer_size, stdin);
+        if (file_stream == -1)
+        {
+            if (isatty(STDIN_FILENO) == 1)
+                write(1, "\n", 1);
+            break;
+        }
 
-		if (s[file_stream - 1]  == '\n')
-			s[file_stream - 1]  = '\0';
-		if (*s == '\0')
-			continue;
-		if (cmd_read(s, file_stream, name) == 2)
-			break;
-	}
-	free(s);
-	s = NULL;
-	return (0);
+        if (s[file_stream - 1] == '\n')
+            s[file_stream - 1] = '\0';
+        if (*s == '\0')
+            continue;
+        int cmd_return_status = cmd_read(s, file_stream, name);
+        if (cmd_return_status == 2)
+        {
+            return_status = 0;
+            break;
+        }
+        else if (cmd_return_status != 0)
+        {
+            return_status = cmd_return_status;
+        }
+    }
+    free(s);
+    s = NULL;
+    return (return_status);
 }
+
+
 /**
  * cmd_read - handles command line and tokenizes it
  * @s: string
