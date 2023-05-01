@@ -123,25 +123,25 @@ int call_command(char *cmd_arr[], char *name)
 			perror("Error:");
 			status = -1;
 		}
-	}
-	else if (is_child > 0)
-	{
-		wait(&status);
-		if (WIFEXITED(status))
+		else if (is_child > 0)
 		{
-			status = WEXITSTATUS(status);
-			if (status != 0)
+			wait(&status);
+			if (WIFEXITED(status))
 			{
-				if (_strcmp(cmd_arr[0], "exit") == 0 && cmd_arr[1] == NULL)
-				status = 2;
+				status = WEXITSTATUS(status);
+				if (status != 0)
+				{
+					if (_strcmp(cmd_arr[0], "exit") == 0 && cmd_arr[1] == NULL)
+					status = 2;
+				}
 			}
 		}
-	}
-	else if (is_child == 0)
-	{
-		(execve(exe_path_str, cmd_arr, environ));
-		perror("Error:");
-		exit(127);
+		else if (is_child == 0)
+		{
+			(execve(exe_path_str, cmd_arr, environ));
+			perror("Error:");
+			exit(127);
+		}
 	}
 	free(exe_path_str);
 	return (status);
