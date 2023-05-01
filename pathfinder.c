@@ -10,11 +10,11 @@ char *pathfinder(char *cmd)
     }
 
     char *path = _strdup(_getenv("PATH"));
-    int i = 0;
     char *path_tokens = strtok(path, ":");
     char *path_array[100];
     char *s2 = cmd;
     char *new_path = NULL;
+    int i = 0, j;
 
     new_path = malloc(sizeof(char) * 100);
 
@@ -25,7 +25,7 @@ char *pathfinder(char *cmd)
     }
     path_array[i] = NULL;
 
-    for (int j = 0; path_array[j]; j++)
+    for (j = 0; path_array[j] != NULL; j++)
     {
         _strcpy(new_path, path_array[j]);
         _strcat(new_path, "/");
