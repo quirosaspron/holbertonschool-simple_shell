@@ -13,9 +13,7 @@ int main(int argc, char *argv[])
     char *name;
     int return_status = 0;
     int cmd_return_status;
-    env_t *env_list_head = 
     
-    env_list_head = env_list(environ);
     (void)argc;
     name = argv[0];
 

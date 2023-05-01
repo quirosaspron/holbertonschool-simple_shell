@@ -22,10 +22,4 @@ void print_not_found(char *cmd, char *name);
 int call_command(char *cmd_arr[], char *name);
 char *_getenv(char *var);
 int _str_n_cmp(char *s1, char *s2, int n);
-typedef struct env_node {
-    char *name;
-    char *value;
-    struct env_node *next;
-} env_t;
-env_t *env_list(char **env);
 #endif

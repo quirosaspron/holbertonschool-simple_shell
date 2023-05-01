@@ -57,37 +57,3 @@ char *_getenv(char *var)
 	}
 	return (NULL);
 }
-/**
- * env_list - create a linked list of the environment variables
- * @env: the environment variables
- * Return: pointer to the head of the linked list
- */
-env_t *env_list(char **env)
-{
-	env_t *head, *node, *temp;
-	char *path_value = NULL;
-
-	head = NULL;
-	while (*env)
-	{
-		node = malloc(sizeof(env_t));
-		if (node == NULL)
-			exit(1);
-		node->name = _strdup(*env);
-		node->next = NULL;
-		if (head == NULL)
-			head = node;
-		else
-			temp->next = node;
-		temp = node;
-
-		if (_strcmp(*env, "PATH=", 5) == 0)
-			_unsetenv(&head, *env);
-		if (_strcmp(*env, "PATH1=", 6) == 0)
-			_unsetenv(&head, *env);
-	}
-	path_value = _strcat("PATH1=", "/bin");
-	_setenv(&head, path_value);
-
-	return (head);
-}
