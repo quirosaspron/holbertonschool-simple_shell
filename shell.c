@@ -132,7 +132,7 @@ int call_command(char *cmd_arr[], char *name)
 			status = WEXITSTATUS(status);
 			if (status != 0)
 			{
-				if (_strcmp(cmd_arr[0], "exit")) == 0 && cmd_arr[1] == NULL;
+				if (_strcmp(cmd_arr[0], "exit") == 0 && cmd_arr[1] == NULL);
 				status = 2;
 			}
 		}
