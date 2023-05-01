@@ -2,9 +2,9 @@
 char *pathfinder(char *cmd)
 {
     struct stat buf;
-    char *path = NULL;
-    char *path_tokens = NULL;
-    char *path_array[100] = {NULL};
+    char *path;
+    char *path_tokens;
+    char *path_array[100];
     char *s2 = cmd;
     char *new_path = NULL;
     int i, j;
@@ -12,14 +12,10 @@ char *pathfinder(char *cmd)
     if (stat(cmd, &buf) == 0)
     {
         if (!S_ISDIR(buf.st_mode))
-            return _strdup(cmd);
+            return (_strdup(cmd));
     }
 
-    if (_getenv("PATH") == NULL && _getenv("PATH1") != NULL)
-        path = _strdup(_getenv("PATH1"));
-    else
-        path = _strdup(_getenv("PATH"));
-
+    path = _strdup(_getenv("PATH"));
     path_tokens = strtok(path, ":");
 
     new_path = malloc(sizeof(char) * 100);
@@ -44,7 +40,7 @@ char *pathfinder(char *cmd)
             if (!S_ISDIR(buf.st_mode))
             {
                 free(path);
-                return new_path;
+                return (new_path);
             }
         }
         else
@@ -53,5 +49,5 @@ char *pathfinder(char *cmd)
 
     free(path);
     free(new_path);
-    return NULL;
+    return (NULL);
 }
