@@ -107,7 +107,9 @@ int call_command(char *cmd_arr[], char *name)
     char *exe_path_str = pathfinder(cmd);
     pid_t is_child;
     int status = 0;
-
+    char *path_value = _getenv("PATH");
+    _unsetenv(&environ, "PATH");
+    _setenv(&environ, "PATH1", path_value);
     if (exe_path_str == NULL && _strcmp(cmd_arr[0], "exit") != 0)
     {
         dprintf(STDERR_FILENO, "%s: 1: %s: not found\n", name, cmd);
