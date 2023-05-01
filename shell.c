@@ -110,7 +110,7 @@ int call_command(char *cmd_arr[], char *name)
     if (exe_path_str == NULL)
     {
         print_not_found(cmd, name);
-        return 127;  // Return status code 127 when command is not found
+        return 127;
     }
 
     is_child = fork();
