@@ -55,4 +55,5 @@ char *_getenv(char *var)
 		if (_str_n_cmp(environ[i], var, _strlen(var)) == 0)
 			return (&environ[i][_strlen(var)]);
 	}
+	return (NULL);
 }
