@@ -113,6 +113,13 @@ int call_command(char *cmd_arr[], char *name)
         dprintf(STDERR_FILENO, "%s: 1: %s: not found\n", name, cmd);
         status = 127;
     }
+    else if (_strcmp(cmd_arr[0], "exit") == 0)
+    {
+        if (cmd_arr[1] != NULL)
+            status = _atoi(cmd_arr[1]);
+        else
+            status = 0;
+    }
     else
     {
         is_child = fork();
@@ -124,15 +131,6 @@ int call_command(char *cmd_arr[], char *name)
         else if (is_child > 0)
         {
             wait(&status);
-	    if (WIFEXITED(status))
-            {
-                status = WEXITSTATUS(status);
-                if (status != 0)
-                {
-                    if (_strcmp(cmd_arr[0], "exit") == 0 && cmd_arr[1] == NULL)
-                        status = 2;
-                }
-            }
         }
         else if (is_child == 0)
         {
@@ -145,3 +143,4 @@ int call_command(char *cmd_arr[], char *name)
 
     return status;
 }
+
