@@ -17,7 +17,6 @@ int _printenv(void)
 	}
 	return (0);
 }
-
 /**
  * _str_n_cmp - lexicographically compares not more than count chars
  * from two strings and returns an integer based on the result.
@@ -38,7 +37,7 @@ int _str_n_cmp(char *s1, char *s2, int n)
 		if (c1 == '\0' || c1 != c2)
 			return (c1 > c2 ? 1 : (c1 < c2 ? -1 : 0));
 	}
-				return (0);
+	return (0);
 }
 /**
  * _getenv - prints environment like getenv

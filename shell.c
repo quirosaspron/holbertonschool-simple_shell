@@ -84,18 +84,6 @@ int cmd_read(char *s, size_t __attribute__((unused))file_stream, char *name)
 	return (call_command(cmd_arr, name));
 }
 /**
- * print_not_found - prints when cmd is not found in path
- * @cmd: a string provided by the stdin
- * @name: name
- */
-void print_not_found(char *cmd, char *name)
-{
-	write(2, name, _strlen(name));
-	write(2, ": 1: ", 5);
-	write(2, cmd, _strlen(cmd));
-	write(2, ": not found\n", 12);
-}
-/**
  * call_command - calls cmd, forks, execve
  * @cmd_arr: a string provided by the stdin
  * @name: name

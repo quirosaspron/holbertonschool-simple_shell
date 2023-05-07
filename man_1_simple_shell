@@ -1,1 +1,11 @@
-Not empty
+The main function handles the user input, calls cmd_read to tokenize and parse the input, and then calls call_command to execute the parsed input.
+
+The cmd_read function tokenizes the input and checks for built-in commands like exit and env. If a built-in command is found, it is executed immediately. Otherwise, call_command is called to execute the command.
+
+The call_command function forks a child process, executes the command using execve, and waits for the child process to finish before returning.
+
+The _printenv function simply prints the environment variables like the printenv command.
+
+The _str_n_cmp function is a helper function used to compare two strings up to a certain number of characters.
+
+The _getenv function searches for an environment variable by name and returns its value
